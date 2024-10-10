@@ -11,30 +11,6 @@
         "sbs": true,
         "written": true
       },
-      "entities": {
-        "command": false,
-        "priorities": ["initializing", "composing", "loading", "default", "writing"],
-        "sbs": true,
-        "written": true
-      },
-      "entity": {
-        "command": false,
-        "priorities": [
-          "initializing",
-          "prompting",
-          "configuring",
-          "loading",
-          "preparing",
-          "preparingEachEntityField",
-          "preparingEachEntityRelationship",
-          "default",
-          "writing",
-          "install",
-          "end"
-        ],
-        "sbs": true,
-        "written": true
-      },
       "heroku": {
         "command": false,
         "priorities": ["initializing", "prompting", "configuring", "default", "end"],
@@ -44,9 +20,10 @@
     },
     "githubWorkflows": true,
     "jhipsterVersion": "8.1.0",
+    "js", false,
     "localBlueprint": false,
     "sampleWritten": true,
     "skipCommitHook": true,
-    "subGenerators": ["app", "entities", "entity", "heroku"]
+    "subGenerators": ["app", "project-name", "heroku", "react-native", "spring-boot"]
   }
 }
