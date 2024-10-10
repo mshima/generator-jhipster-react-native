@@ -38,7 +38,7 @@
     },
     "githubWorkflows": true,
     "jhipsterVersion": "8.1.0",
-    "js", false,
+    "js": false,
     "localBlueprint": false,
     "sampleWritten": true,
     "skipCommitHook": true,
