@@ -1,2 +1,3 @@
 README.md skip
 generators/heroku/** skip
+.blueprint/** skip
