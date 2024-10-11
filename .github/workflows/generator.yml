@@ -1,41 +1,17 @@
-name: Generator Tests
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - '*'
-      - '!dependabot/**'
-  pull_request:
-defaults:
-  run:
-    shell: bash
-concurrency:
-  # Group by workflow and ref, limit to 1 for pull requests
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ startsWith(github.ref, 'refs/pull/') || github.run_number }}
-  # Cancel intermediate pull request builds
-  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
+name: Generator
+on: [push, pull_request]
+permissions:
+  contents: read
 jobs:
-  lint-and-test:
+  react-native:
+    name: npm-test
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]') && !contains(github.event.pull_request.title, '[skip ci]') && !contains(github.event.pull_request.title, '[ci skip]') && !contains(github.event.ref_type, '[tag]')"
-    timeout-minutes: 20
-    strategy:
-      fail-fast: false
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4.1.1
-      - uses: actions/setup-node@v4.0.2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20.x
-      - run: git --no-pager log -n 10 --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue) <%an>%Creset' --abbrev-commit
-      - name: Config git variables
-        env:
-          JHI_SCRIPTS: ./test/scripts
-        run: $JHI_SCRIPTS/git-config.sh
-      - name: npm ci
-        run: npm ci
-      - name: lint and test
-        run: npm run test
-      - name: check-dependencies
-        run: |
-          cd generators/react-native/resources/expo
-          npm run check-dependencies
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run test

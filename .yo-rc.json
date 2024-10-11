@@ -37,9 +37,10 @@
       }
     },
     "githubWorkflows": true,
-    "jhipsterVersion": "8.1.0",
+    "jhipsterVersion": "8.7.1",
     "js": false,
     "localBlueprint": false,
+    "packageJsonType": "module",
     "sampleWritten": true,
     "skipCommitHook": true,
     "subGenerators": ["app", "heroku", "project-name", "react-native", "spring-boot"]
