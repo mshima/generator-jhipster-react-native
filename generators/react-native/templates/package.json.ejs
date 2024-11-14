@@ -4,7 +4,7 @@
   "scripts": {
 <%_ if (detox) { _%>
     "e2e:build:ios": "detox build --configuration ios.sim.release",
-    "e2e:test:ios": "detox test --configuration ios.sim.release --retries 3",
+    "e2e:test:ios": "detox test --configuration ios.sim.release --retries 3 --debug-synchronization 3000",
 <%_ } _%>
     "android": "expo start --android",
     "ios": "expo start --ios",
